@@ -1,0 +1,55 @@
+class banka():
+    def __init__(self,hesapsahibi,sifre,bakiye=0):
+        self.hesapsahibi=hesapsahibi
+        self.bakiye=bakiye
+        self.sifre=sifre
+    def parayatir(self,girilenSifre,yatırılanpara,deneme=2):
+           
+            self.deneme=deneme
+            
+            while deneme>0:
+                if self.sifre==girilenSifre:
+                    self.bakiye+=yatırılanpara
+                    print(f"Güncel bakiyeniz: {self.bakiye}")
+                    break
+                else:
+                    print(f"Şifre yanlış! {deneme} hakkınız kaldı. Tekrar deneyin. ")
+                    girilenSifre=str(input("Şifreyi tekrar girin: "))
+                    
+                    deneme-=1
+            
+            return f"Güncel bakiyeniz: {self.bakiye}"
+    def paracek(self,cekilenpara=10):
+         self.cekilenpara=cekilenpara
+         try: 
+           if self.bakiye<cekilenpara:
+              print(f"Yetersiz bakiye! Bakiyeniz: {self.bakiye}")
+            else:
+              self.bakiye-=cekilenpara
+              print(f"Paranız başarıyla çekildi. Bakiyeniz: {self.bakiye}")
+        
+        except:
+            print("Hatalı veri girişi!")  
+        
+    def sifredegistir(self,sifre,yenisifre,degisimHakki=2):
+       
+        kontrol=str(input("Şifrenizi değiştirmek için öncelikle eski şifrenizi giriniz: "))
+        
+        while degisimHakki>0:
+            if self.sifre==kontrol:
+                yenisifre=str(input("Yeni şifrenizi girin: "))
+                yenisifrekontrol=str(input("Yeni şifrenizi tekrar girin: "))
+                if yenisifre==yenisifrekontrol:
+                    self.sifre=yenisifre
+                    break
+                else:
+                    yenisifrekontrol=(str(input("Yeni şifrenizi eksik ya da yanlış girdiniz! Tekrar girin: ")))
+            else:
+                kontrol=str(input("Eski şifrenizi yanlış girdiniz! Eski şifrenizi tekrar giriniz: "))
+                degisimHakki-=1
+            
+
+        return
+
+
+        
